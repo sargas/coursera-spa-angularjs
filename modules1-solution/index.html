@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LunchCheck">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+		<title>Lunch Checker</title>
+	</head>
+	<body class="container">
+		<div class="card justify-content-center mt-4 p-2" ng-controller="LunchCheckController">
+			<h1 class="card-title">Lunch Checker</h1>
+
+			<form class="form-inline">
+				<label class="sr-only" for="foodList">List of Food</label>
+				<input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="foodList" ng-model="foodList" placeholder="Comma seperated list of food items" />
+				<button type="submit" class="btn btn-outline-dark mb-2" ng-click="runCheck();">Check If Too Much</button>
+			</form>
+			<p class="text-muted">Note: empty items in this list are not counted towards the total number of food items.</p>
+			<div>{{ lunchAnalysis }}</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js" crossorigin="anonymous"></script>
+		<!-- not including the javascript libraries used by bootstrap -->
+		<!-- not needed in this site, and I do not want it to appear that I'm using jQuery -->
+		<script src="app.js"></script>
+	</body>
+</html>
