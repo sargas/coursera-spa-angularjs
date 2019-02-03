@@ -14,17 +14,22 @@ function getLunchCountMessage(numOfItems) {
 }
 
 function countLunchItems(foodList) {
-    return foodList.split(',').filter(x => x.trim() !== "").length;
+    return foodList
+        .split(',')
+        .filter(function (x) {return x.trim() !== ""})
+        .length;
 }
 
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
     $scope.lunchAnalysis = '';
     $scope.foodList = '';
+    $scope.hasItems = 'unknown';
 
     $scope.runCheck = function() {
-        $scope.lunchAnalysis = getLunchCountMessage(
-            countLunchItems($scope.foodList));
+        var numLunchItems = countLunchItems($scope.foodList)
+        $scope.lunchAnalysis = getLunchCountMessage(numLunchItems);
+        $scope.hasItems = numLunchItems !== 0;
     }
 }
 })();

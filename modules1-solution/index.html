@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+		<link rel="stylesheet" href="app.css" />
 		<title>Lunch Checker</title>
 	</head>
 	<body class="container">
@@ -13,11 +13,16 @@
 
 			<form class="form-inline">
 				<label class="sr-only" for="foodList">List of Food</label>
-				<input type="text" class="form-control mb-2 mr-sm-2 flex-grow-1" id="foodList" ng-model="foodList" placeholder="Comma seperated list of food items" />
+				<input
+					type="text"
+					class="form-control mb-2 mr-sm-2 flex-grow-1 input-has-items-{{ hasItems }}"
+					id="foodList"
+					ng-model="foodList"
+					placeholder="Comma seperated list of food items" />
 				<button type="submit" class="btn btn-outline-dark mb-2" ng-click="runCheck();">Check If Too Much</button>
 			</form>
 			<p class="text-muted">Note: empty items in this list are not counted towards the total number of food items.</p>
-			<div>{{ lunchAnalysis }}</div>
+			<div class="message-has-items-{{ hasItems }}">{{ lunchAnalysis }}</div>
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js" crossorigin="anonymous"></script>

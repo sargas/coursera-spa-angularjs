@@ -1,0 +1,15 @@
+.message-has-items-true {
+    color: green;
+}
+
+.message-has-items-false {
+    color: red;
+}
+
+.input-has-items-true {
+    border-color: green;
+}
+
+.input-has-items-false {
+    border-color: red;
+}
