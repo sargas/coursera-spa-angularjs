@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<title>Shopping List Check Off</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row justify-content-center">
+				<h1>Shopping List Check Off</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<h2>To Buy</h2>
+					<div ng-controller="ToBuyController as toBuy">
+						<p ng-if="toBuy.list.length === 0" class="text-muted">Everything is bought!</p>
+						<ul ng-if="toBuy.list.length !== 0" class="list-group">
+							<li ng-repeat="item in toBuy.list" class="list-group-item d-flex justify-content-between align-items-center">
+								<span>Buy {{ item.quantity }} {{ item.name }}</span>
+								<button class="btn btn-outline-success float-right" ng-click="toBuy.buyItem($index)">Bought</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h2>Already bought</h2>
+					<div ng-controller="AlreadyBoughtController as alreadyBought">
+						<p ng-if="alreadyBought.list.length === 0" class="text-muted">Nothing bought yet</p>
+						<ul ng-if="alreadyBought.list.length !== 0" class="list-group">
+							<li ng-repeat="item in alreadyBought.list" class="list-group-item">
+								Bought {{ item.quantity }} {{ item.name }}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js" crossorigin="anonymous"></script>
+		<!-- not including the javascript libraries used by bootstrap -->
+		<!-- not needed in this site, and I do not want it to appear that I'm using jQuery -->
+		<script src="app.js"></script>
+	</body>
+</html>
