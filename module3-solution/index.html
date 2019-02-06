@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NarrowItDownApp">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<title>Narrow Down Your Menu Choice</title>
+	</head>
+	<body>
+		<div class="container" ng-controller="NarrowItDownController as vm">
+			<div class="row justify-content-center">
+				<h1>Narrow Down Your Chinese Menu Choice</h1>
+			</div>
+			<div class="row">
+				<form class="form-inline flex-grow-1">
+					<div class="form-group flex-grow-1">
+						<label class="flex-grow-1">
+							<span class="sr-only">Search term</span>
+							<input type="text" placeholder="Search Term" class="form-control flex-grow-1" ng-model="vm.searchTerm"/>
+						</label>
+					</div>
+					<button ng-if="!vm.loading" class="btn btn-primary" ng-click="vm.search()">
+						Narrow It Down For Me!
+					</button>
+					<button ng-if="vm.loading" class="btn btn-primary">
+						<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+						Loading
+					</button>
+				</form>
+			</div>
+			<div class="row mt-5">
+				<div ng-if="vm.performedSearch && vm.found.length === 0 && !vm.loading" class="text-danger m-auto" role="alert">
+					Nothing found
+				</div>
+				<found-items ng-if="vm.found.length > 0" found-items="vm.found" on-remove="vm.removeFound(index)"></found-items>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js" crossorigin="anonymous"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

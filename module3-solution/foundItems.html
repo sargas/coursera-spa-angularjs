@@ -1,0 +1,9 @@
+<div class="card-columns">
+	<div class="card" ng-repeat="item in list">
+		<div class="card-body">
+			<h5 class="card-title">{{ item.short_name }}. {{ item.name }}</h5>
+			<p class="card-text">{{ item.description }} </p>
+			<a ng-click="onRemove({index: $index})" href="#" class="btn btn-outline-danger">Don't want this one!</a>
+		</div>
+	</div>
+</div>
