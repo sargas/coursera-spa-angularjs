@@ -1,0 +1,5 @@
+<div class="list-group">
+	<button ui-sref="items({category: category.short_name})" ui-sref-active="active" class="list-group-item list-group-item-action" ng-repeat="category in $ctrl.categories">
+		{{ category.name }}
+	</button>
+</div>

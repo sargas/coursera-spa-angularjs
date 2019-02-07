@@ -1,0 +1,17 @@
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a ui-sref="home">Home</a></li>
+		<li class="breadcrumb-item" ng-if="$ctrl.selectedCategory"><a ui-sref="categories">Categories</a></li>
+		<li class="breadcrumb-item active" ng-if="!$ctrl.selectedCategory">Categories</li>
+		<li class="breadcrumb-item active" ng-if="$ctrl.selectedCategory">{{ $ctrl.selectedCategory.name }}</li>
+	</ol>
+</nav>
+
+<div class="container">
+	<div class="row flex-nowrap">
+		<category-view categories="$ctrl.categories"></category-view>
+		<div class="flex-1 ml-4">
+		<category-items ng-if="$ctrl.foodItems.length" food-items="$ctrl.foodItems"></div>
+		</div>
+	</div>
+</div>

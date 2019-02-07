@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MenuApp">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<title>Menu App</title>
+	</head>
+	<body>
+		<h1 class="display-1">Menu App</h1>
+		<ui-view></ui-view>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js" integrity="sha256-jUHgsHoPXAh7OyogDZWIrwTF8PXRiRg+mdxod+c295k=" crossorigin="anonymous"></script>
+
+		<script src="src/data.module.js"></script>
+		<script src="src/menuapp.module.js"></script>
+
+		<script src="src/routes.js"></script>
+
+		<script src="src/menudata.service.js"></script>
+
+		<script src="src/categories.component.js"></script>
+		<script src="src/categories.controller.js"></script>
+		<script src="src/items.component.js"></script>
+	</body>
+</html>
