@@ -1,0 +1,54 @@
+<div class="container">
+    <h2 id="menu-categories-title" class="text-center">Register for Newsletter</h2>
+    <form novalidate name="signUpForm">
+        <div class="form-group">
+            <label for="newSignUpFirstName">First Name</label>
+            <input
+                type="text" class="form-control" name="newSignUpFirstName" placeholder="First Name"
+                ng-model="signUpCtrl.firstName" required>
+        </div>
+        <div ng-if="signUpForm.newSignUpFirstName.$error.required && signUpForm.newSignUpFirstName.$touched" class="alert alert-danger">
+            First name is required
+        </div>
+        <div class="form-group">
+            <label for="newSignUpLastName">Last Name</label>
+            <input
+                type="text" class="form-control" name="newSignUpLastName" placeholder="Last Name"
+                ng-model="signUpCtrl.lastName" required>
+        </div>
+        <div ng-if="signUpForm.newSignUpLastName.$error.required && signUpForm.newSignUpLastName.$touched" class="alert alert-danger">
+            Last name is required
+        </div>
+        <div class="form-group">
+            <label for="newSignUpEmail">Email address</label>
+            <input
+                type="email" class="form-control" name="newSignUpEmail" placeholder="Email"
+                ng-model="signUpCtrl.email" required>
+        </div>
+        <div ng-if="signUpForm.newSignUpEmail.$invalid && signUpForm.newSignUpEmail.$touched" class="alert alert-danger">
+            Must provide a valid email address
+        </div>
+        <div class="form-group">
+            <label for="newSignUpPhone">Phone Number</label>
+            <input
+                type="tel" class="form-control" name="newSignUpPhone" placeholder="###-###-####"
+                ng-model="signUpCtrl.phoneNumber" required pattern="\(?(\d{3})\)?-?(\d{3})-?(\d{4})">
+        </div>
+        <div ng-if="signUpForm.newSignUpPhone.$invalid && signUpForm.newSignUpPhone.$touched" class="alert alert-danger">
+            A 10-digit phone number is required. Possible formats include ###-###-####, (###)###-####. and ##########.
+        </div>
+        <div class="form-group">
+            <label for="newSignUpFavorite">Favorite Menu Item</label>
+            <input
+                type="text" class="form-control" name="newSignUpFavorite" placeholder="Favorite menu item short name, e.g., C2"
+                ng-model="signUpCtrl.menuItem" required pattern="[A-Z]+\d+"/>
+        </div>
+        <div ng-if="signUpForm.newSignUpFavorite.$error.required && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
+            Favorite menu item required
+        </div>
+        <div ng-if="signUpForm.newSignUpFavorite.$invalid && !signUpForm.newSignUpFavorite.$error.required && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
+            Favorite menu item must be specified via its menu code / short name (i.e., C2, L20, or FY3)
+        </div>
+        <button ng-disabled="signUpForm.$invalid" type="submit" class="btn btn-default">Sign Up!</button>
+    </form>
+</div>
