@@ -1,11 +1,11 @@
 <div class="container">
     <h2 id="menu-categories-title" class="text-center">Register for Newsletter</h2>
-    <form novalidate name="signUpForm">
+    <form novalidate name="signUpForm" ng-if="!(signUpCtrl.user.firstName === undefined && signUpCtrl.isSaved())">
         <div class="form-group">
             <label for="newSignUpFirstName">First Name</label>
             <input
                 type="text" class="form-control" name="newSignUpFirstName" placeholder="First Name"
-                ng-model="signUpCtrl.firstName" required>
+                ng-model="signUpCtrl.user.firstName" required ng-disabled="signUpCtrl.isSaved()">
         </div>
         <div ng-if="signUpForm.newSignUpFirstName.$error.required && signUpForm.newSignUpFirstName.$touched" class="alert alert-danger">
             First name is required
@@ -14,7 +14,7 @@
             <label for="newSignUpLastName">Last Name</label>
             <input
                 type="text" class="form-control" name="newSignUpLastName" placeholder="Last Name"
-                ng-model="signUpCtrl.lastName" required>
+                ng-model="signUpCtrl.user.lastName" required ng-disabled="signUpCtrl.isSaved()">
         </div>
         <div ng-if="signUpForm.newSignUpLastName.$error.required && signUpForm.newSignUpLastName.$touched" class="alert alert-danger">
             Last name is required
@@ -23,7 +23,7 @@
             <label for="newSignUpEmail">Email address</label>
             <input
                 type="email" class="form-control" name="newSignUpEmail" placeholder="Email"
-                ng-model="signUpCtrl.email" required>
+                ng-model="signUpCtrl.user.email" required ng-disabled="signUpCtrl.isSaved()">
         </div>
         <div ng-if="signUpForm.newSignUpEmail.$invalid && signUpForm.newSignUpEmail.$touched" class="alert alert-danger">
             Must provide a valid email address
@@ -32,7 +32,7 @@
             <label for="newSignUpPhone">Phone Number</label>
             <input
                 type="tel" class="form-control" name="newSignUpPhone" placeholder="###-###-####"
-                ng-model="signUpCtrl.phoneNumber" required pattern="\(?(\d{3})\)?-?(\d{3})-?(\d{4})">
+                ng-model="signUpCtrl.user.phoneNumber" required pattern="\(?(\d{3})\)?-?(\d{3})-?(\d{4})" ng-disabled="signUpCtrl.isSaved()">
         </div>
         <div ng-if="signUpForm.newSignUpPhone.$invalid && signUpForm.newSignUpPhone.$touched" class="alert alert-danger">
             A 10-digit phone number is required. Possible formats include ###-###-####, (###)###-####. and ##########.
@@ -41,7 +41,7 @@
             <label for="newSignUpFavorite">Favorite Menu Item</label>
             <input
                 type="text" class="form-control" name="newSignUpFavorite" placeholder="Favorite menu item short name, e.g., C2"
-                ng-model="signUpCtrl.menuItem" required pattern="[A-Z]+\d+"/>
+                ng-model="signUpCtrl.user.favoriteMenuItem" required pattern="[A-Z]+\d+" ng-disabled="signUpCtrl.isSaved()"/>
         </div>
         <div ng-if="signUpForm.newSignUpFavorite.$error.required && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
             Favorite menu item required
@@ -49,6 +49,9 @@
         <div ng-if="signUpForm.newSignUpFavorite.$invalid && !signUpForm.newSignUpFavorite.$error.required && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
             Favorite menu item must be specified via its menu code / short name (i.e., C2, L20, or FY3)
         </div>
-        <button ng-disabled="signUpForm.$invalid" type="submit" class="btn btn-default">Sign Up!</button>
+        <button ng-click="signUpCtrl.submitUser()" ng-disabled="signUpForm.$invalid || signUpCtrl.isSaved()" type="submit" class="btn btn-default">Sign Up!</button>
     </form>
+    <div class="alert alert-success" ng-if="signUpCtrl.isSaved()">
+        Your information has been saved
+    </div>
 </div>
