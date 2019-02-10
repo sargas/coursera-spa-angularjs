@@ -41,12 +41,18 @@
             <label for="newSignUpFavorite">Favorite Menu Item</label>
             <input
                 type="text" class="form-control" name="newSignUpFavorite" placeholder="Favorite menu item short name, e.g., C2"
-                ng-model="signUpCtrl.user.favoriteMenuItem" required pattern="[A-Z]+\d+" ng-disabled="signUpCtrl.isSaved()"/>
+                ng-model="signUpCtrl.user.favoriteMenuItem" required pattern="[A-Z]+\d+" valid-menu-item ng-disabled="signUpCtrl.isSaved()"/>
         </div>
         <div ng-if="signUpForm.newSignUpFavorite.$error.required && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
             Favorite menu item required
         </div>
-        <div ng-if="signUpForm.newSignUpFavorite.$invalid && !signUpForm.newSignUpFavorite.$error.required && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
+        <div ng-if="signUpForm.newSignUpFavorite.$pending.menuItem" class="alert alert-info">
+            Checking for menu item...
+        </div>
+        <div ng-if="signUpForm.newSignUpFavorite.$error.menuItem && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
+            No such menu number exists
+        </div>
+        <div ng-if="signUpForm.newSignUpFavorite.$error.pattern && signUpForm.newSignUpFavorite.$touched" class="alert alert-danger">
             Favorite menu item must be specified via its menu code / short name (i.e., C2, L20, or FY3)
         </div>
         <button ng-click="signUpCtrl.submitUser()" ng-disabled="signUpForm.$invalid || signUpCtrl.isSaved()" type="submit" class="btn btn-default">Sign Up!</button>
