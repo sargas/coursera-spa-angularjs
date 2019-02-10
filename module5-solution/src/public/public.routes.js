@@ -46,6 +46,21 @@ function routeConfig ($stateProvider) {
       templateUrl: 'src/public/sign-up/sign-up.html',
       controller: 'SignUpController',
       controllerAs: 'signUpCtrl'
+    })
+    .state('public.myinfo', {
+      url: '/my-info',
+      templateUrl: 'src/public/sign-up/my-info.html',
+      controller: 'MyInfoController',
+      controllerAs: 'myInfo',
+      resolve: {
+        favoriteMenuItem: ['NewsletterService', 'MenuService', function (NewsletterService, MenuService) {
+          if (!NewsletterService.isSignedIn()) {
+            return;
+          } else {
+            return MenuService.getMenuItem(NewsletterService.signedUpUser.favoriteMenuItem);
+          }
+        }]
+      }
     });
 }
 })();

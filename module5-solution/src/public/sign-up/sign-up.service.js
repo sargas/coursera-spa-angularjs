@@ -7,14 +7,14 @@
 function NewsletterService() {
     var service = this;
 
-    service.SignedUpUser = undefined;
+    service.signedUpUser = undefined;
 
     service.isSignedIn = function() {
-        return service.SignedUpUser !== undefined;
+        return service.signedUpUser !== undefined;
     }
 
     service.registerUser = function(user) {
-        service.SignedUpUser = user;
+        service.signedUpUser = user;
     }
 }
 
